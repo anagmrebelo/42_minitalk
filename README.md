@@ -1,4 +1,4 @@
-# 42_minitalk
+# minitalk
 
 ## Project description:
 Coded a small data exchange program using UNIX signals and get famliliar with the concept of bit shifting
