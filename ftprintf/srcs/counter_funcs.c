@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   counter_funcs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: arebelo <arebelo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 15:47:54 by arebelo           #+#    #+#             */
-/*   Updated: 2022/01/31 13:48:19 by arebelo          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:19:13 by arebelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libftprintf.h"
 
 void	counter_int(int n, t_print *specs)
 {

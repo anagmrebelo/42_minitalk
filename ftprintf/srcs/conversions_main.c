@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   conversions_main.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: arebelo <arebelo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 13:02:56 by arebelo           #+#    #+#             */
-/*   Updated: 2022/01/31 12:22:22 by arebelo          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:19:13 by arebelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libftprintf.h"
 
 static void	aux_one(t_print *specs);
 static void	aux_two(t_print *specs, const char *str);

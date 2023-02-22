@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clean_struct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: arebelo <arebelo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 17:52:06 by arebelo           #+#    #+#             */
-/*   Updated: 2022/01/31 16:19:52 by arebelo          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:19:13 by arebelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libftprintf.h"
 
 void	initialize_struct(t_print *specs)
 {	

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_id.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: arebelo <arebelo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 20:50:19 by arebelo           #+#    #+#             */
-/*   Updated: 2022/01/31 13:22:53 by arebelo          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:19:13 by arebelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libftprintf.h"
 
 int	is_id(char c)
 {

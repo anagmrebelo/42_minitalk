@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_xu.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: arebelo <arebelo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:15:29 by arebelo           #+#    #+#             */
-/*   Updated: 2022/01/26 20:08:05 by arebelo          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:19:13 by arebelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libftprintf.h"
 
 void	ft_putnbr_xu(unsigned int n, int fd, t_print *specs, unsigned int temp)
 {

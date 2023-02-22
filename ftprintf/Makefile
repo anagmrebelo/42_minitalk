@@ -3,61 +3,113 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arebelo <arebelo@student.42barcelo>        +#+  +:+       +#+         #
+#    By: anarebelo <anarebelo@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/21 15:23:30 by arebelo           #+#    #+#              #
-#    Updated: 2022/01/31 16:45:27 by arebelo          ###   ########.fr        #
+#    Updated: 2023/02/22 01:12:50 by anarebelo        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS 		= ./srcs/clean_struct.c ./srcs/conversions_first.c ./srcs/conversions_last.c ./srcs/conversions_main.c ./srcs/counter_funcs.c ./srcs/ft_putnbr_base_x.c ./srcs/ft_putnbr_x.c ./srcs/ft_putnbr_xu.c ./srcs/is_id.c ./srcs/libftprintf.c ./srcs/print_mfw.c ./srcs/putstr_limited.c ./srcs/print_percent.c
-SRCS_BONUS 	= ./srcs/clean_struct.c ./srcs/conversions_first.c ./srcs/conversions_last.c ./srcs/conversions_main_bonus.c ./srcs/counter_funcs.c ./srcs/ft_putnbr_base_x.c ./srcs/ft_putnbr_x.c ./srcs/ft_putnbr_xu.c ./srcs/is_id.c ./srcs/libftprintf.c ./srcs/print_mfw.c ./srcs/putstr_limited.c ./srcs/print_percent.c
+# NAME
+# **************************************************************************** #
+NAME				= libftprintf.a
+NAME_BONUS			= libftprintf_bonus.a
 
-INCLUDE		= ./includes/libftprintf.h 
+# FILES
+# **************************************************************************** #
 
-OBJS		= ${SRCS:.c=.o}
+FILES 				= clean_struct.c\
+					conversions_first.c\
+					conversions_last.c\
+					conversions_main.c\
+					counter_funcs.c\
+					ft_putnbr_base_x.c\
+					ft_putnbr_x.c\
+					ft_putnbr_xu.c\
+					is_id.c\
+					libftprintf.c\
+					print_mfw.c\
+					putstr_limited.c\
+					print_percent.c
 
-OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
+FILES_BONUS			= clean_struct.c\
+					conversions_first.c\
+					conversions_last.c\
+					conversions_main_bonus.c\
+					counter_funcs.c\
+					ft_putnbr_base_x.c\
+					ft_putnbr_x.c\
+					ft_putnbr_xu.c\
+					is_id.c\
+					libftprintf.c\
+					print_mfw.c\
+					putstr_limited.c\
+					print_percent.c
 
-LIBFT_PATH	= ./libft/
-LIBFT		= libft.a
+SRCS				=${addprefix ${SRCS_DIR}, ${FILES:.c=.o}}
+OBJS				=${addprefix ${OBJS_DIR}, ${FILES:.c=.o}}
+OBJS_BONUS			=${addprefix ${OBJS_DIR}, ${FILES:.c=.o}}
+DEPS				=${addprefix ${OBJS_DIR}, ${FILES:.c=.d}}
+DEPS_BONUS			=${addprefix ${OBJS_DIR}, ${FILES:.c=.d}}
 
-NAME		= libftprintf.a
+# DIRECTORY
+# **************************************************************************** #
+OBJS_DIR			= objs/
+SRCS_DIR			= srcs/
+LIBFT_DIR			= libft/
 
-CC 			= gcc
-RM			= rm -f
-AR			= ar rc
-RN			= ranlib
+# LIBRARIES
+# **************************************************************************** #
+INCLUDE				= -I inc -I ${LIBFT_DIR}inc
+LIBS_EXEC			= $(LIBFT_DIR)libft.a
 
-CFLAGS		= -Wall -Wextra -Werror
+# COMPILATION
+# **************************************************************************** #
+LINK				= gcc
+CC					= gcc -c
+DEPFLAGS			= -MMD -MP
+CFLAGS				= -Wall -Wextra -Werror 
+RM					= rm -rf
+AR					= ar rc
+RN 					= ranlib
 
-.c.o:
-			@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+# RULES
+# **************************************************************************** #
+all:	make_libft ${NAME}
 
+$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
+					@mkdir -p $(dir $@)
+					$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDE) $< -o $@
 
-all:		${NAME}
+make_libft:
+					@make -C $(LIBFT_DIR)
 
 ${NAME}:	${OBJS}
-			$(MAKE) -C ./libft all
-			cp libft/libft.a ${NAME}
-			@${AR} ${NAME} ${OBJS}
-			${RN} ${NAME}
+					cp libft/libft.a .
+					mv libft.a ${NAME}
+					${AR} ${NAME} ${OBJS}
+					${RN} ${NAME}
 
-bonus:		${OBJS_BONUS}
-			${RM} ${NAME}
-			$(MAKE) -C ./libft all
-			cp libft/libft.a ${NAME}
-			${AR} ${NAME} ${OBJS_BONUS}
-			${RN} ${NAME}
+bonus:	make_libft ${NAME_BONUS}
+
+${NAME_BONUS}: ${OBJS_BONUS}
+					@cp libft/libft.a .
+					@mv libft.a ${NAME_BONUS}
+					${AR} ${NAME} ${OBJS_BONUS}
+					${RN} ${NAME_BONUS}
 
 clean:
-			${RM} ${OBJS} ${OBJS_BONUS}
-			$(MAKE) -C ./libft clean
+					@${RM} ${OBJS_DIR}
+					@${MAKE} -C ${LIBFT_DIR} clean
 
-fclean:		clean
-			${RM} ${NAME}
-			$(MAKE) -C ./libft fclean
+fclean:	clean
+					@${RM} ${NAME}
+					@${RM} ${NAME_BONUS}
+					@${MAKE} -C ${LIBFT_DIR} fclean
 
-re:			fclean all
+re:	fclean all
+
+ -include ${DEPS}
+ -include ${DEPS_BONUS}
 
 .PHONY:		all clean fclean re
